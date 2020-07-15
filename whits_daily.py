@@ -1,6 +1,5 @@
 import requests 
 import json 
-import os.path 
 
 flavor_master = {
     "flav_ot_day": "NULL",
@@ -30,7 +29,6 @@ if response.ok:
     flavor_master["flav_ot_day"] = html[flavor_start_index:flavor_end_index]
     flavor_master["flav_desc"] = html[desc_start_index+1:desc_end_index]
 
-    #print(string_url) 
     print("I see a Whit's", flavor_master["flav_ot_day"], "in your future!")
     print("Description:", flavor_master["flav_desc"])
 
