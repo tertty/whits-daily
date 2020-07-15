@@ -24,17 +24,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
     - name: Run script, generate today's JSON
-      run:
-        python whits_daily
-    - name: switching from HTTPS to SSH
-      run: git remote set-url origin ${{ secrets.ssh }}
-    - name: check for changes
-      run: git status
-    - name: stage changed files
-      run: git add .
-    - name: commit changed files
-      run: git commit -m "Auto updating today's JSON"
-    - name: fetch from master
-      run: git fetch origin master
-    - name: push code to master
-      run: git push origin HEAD:master
+      run: python /home/runner/work/whits-daily/whits-daily/whits_daily.py
+    - name: Upload today's JSON to repo
+      run: |
+        date > generated.txt
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        git commit -m "generated"
+        git push
