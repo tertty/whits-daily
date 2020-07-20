@@ -11,7 +11,7 @@ response = requests.get("https://www.instagram.com/whitsfordessert/")
 if response.ok: 
     html = response.text
 
-    flavor_start_index = html.find('The flavor today')+21
+    flavor_start_index = html.find("today")+10
     flavor_end_index = flavor_start_index
 
     while(html[flavor_end_index] != '!'):
