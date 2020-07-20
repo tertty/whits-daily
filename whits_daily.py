@@ -11,6 +11,8 @@ response = requests.get("https://www.instagram.com/whitsfordessert/")
 if response.ok: 
     html = response.text
 
+    print(html)
+    
     flavor_start_index = html.index("today")+10
     flavor_end_index = flavor_start_index
 
