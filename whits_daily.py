@@ -6,7 +6,7 @@ flavor_master = {
     "flav_desc": "NULL"
 }
 
-response = requests.get("https://www.instagram.com/whitsfordessert/")
+response = requests.get("https://www.instagram.com/whitsfordessert/", allow_redirects=False)
 
 if response.ok: 
     html = response.text
