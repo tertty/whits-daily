@@ -6,12 +6,14 @@ flavor_master = {
     "flav_desc": "NULL"
 }
 
-response = requests.get("https://www.instagram.com/whitsfordessert/")
+response = requests.get("https://www.instagram.com/whitsfordessert/", allow_redirects=False)
 
 if response.ok: 
     html = response.text
 
-    flavor_start_index = html.find('The flavor today')+21
+    print(html)
+    
+    flavor_start_index = html.index("today")+10
     flavor_end_index = flavor_start_index
 
     while(html[flavor_end_index] != '!'):

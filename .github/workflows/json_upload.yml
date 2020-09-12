@@ -22,9 +22,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests
+        pip3 install requests
     - name: Run script, generate today's JSON
-      run: python /home/runner/work/whits-daily/whits-daily/whits_daily.py
+      run: python3 whits_daily.py
     - name: Upload today's JSON to repo
       run: |
         date > generated.txt
