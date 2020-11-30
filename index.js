@@ -1,16 +1,22 @@
-const request = require('request');
+const fetch = require('node-fetch');
 
-let url = "https://raw.githubusercontent.com/tertty/whits-daily/master/whits_daily.json";
+let url = "https://www.instagram.com/whitsfordessert/";
 
-let options = {json: true};
+fetch(url)
+    .then(res => res.text())
+    .then(body => {
+        console.log(body);
 
-request(url, options, (error, res, body) => {
-    if (error) {
-        return  console.log(error);
-    }
+        today_flavor_start = body.indexOf("today");
+        today_flavor_end = today_flavor_start;
 
-    if (!error && res.statusCode == 200) {
-        // do something with JSON, using the 'body' variable
-          console.log(body.flav_ot_day.toString().toLowerCase() + ' ' + body.flav_desc.toString().toLowerCase());
-    }
-});
+        while(body[today_flavor_end] != '!'){
+            today_flavor_end++;
+        }
+
+        today_flavor = body.substring(today_flavor_start, today_flavor_end);
+
+        today_desc = ":)";
+
+        console.log("Ok, so here's the sitch. What Whit's has is " + today_flavor + " for today's flavor. What is it? " + today_desc);
+    });
