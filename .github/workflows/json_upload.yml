@@ -15,16 +15,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
+    - uses: actions/setup-node@v1
       with:
-        python-version: 3.8
+        node-version: '12'
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip3 install requests
+      run: npm install node-fetch
     - name: Run script, generate today's JSON
-      run: python whits_daily.py
+      run: node index.js
     - name: Upload today's JSON to repo
       run: |
         date > generated.txt
