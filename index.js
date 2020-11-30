@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 let url = "https://www.instagram.com/whitsfordessert/";
 
-fetch(url)
+fetch(url, options = {headers : {'User-Agent' : 'Mozilla/5.0'}})
     .then(res => res.text())
     .then(body => {
         console.log(body);
